@@ -1,4 +1,4 @@
-package monopoly;
+package fr.tanghe.dev.monopoly;
 
 public abstract class Case {
 

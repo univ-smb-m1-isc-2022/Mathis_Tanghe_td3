@@ -1,4 +1,4 @@
-package monopoly;//Guillaume Jambet
+package fr.tanghe.dev.monopoly;//Guillaume Jambet
 
 public class Main {
                                // joue une partie de monopoly pour 5 joueurs :  Marina, Ambre, Loubna, Mathieu, Cedric

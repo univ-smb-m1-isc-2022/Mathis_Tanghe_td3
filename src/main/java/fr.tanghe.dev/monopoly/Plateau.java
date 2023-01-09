@@ -1,9 +1,8 @@
-package monopoly;
+package fr.tanghe.dev.monopoly;
 
 import java.util.ArrayList;
 
 public class Plateau {
-
 
     public Case depart;
     public  CaseConstructible bellevile;
@@ -43,9 +42,6 @@ public class Plateau {
     creerLesCasesSuivantes();
     genererListeCaseSansProprietaire();
     }
-
-
-
 
     private void creerLesCases(){
     depart = new CaseSpeciale("Depart");

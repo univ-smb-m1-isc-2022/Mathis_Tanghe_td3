@@ -1,4 +1,4 @@
-package monopoly;
+package fr.tanghe.dev.monopoly;
 
 import java.util.ArrayList;
 import java.util.Collections;

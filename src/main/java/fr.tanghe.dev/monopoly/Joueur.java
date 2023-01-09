@@ -1,4 +1,4 @@
-package monopoly;
+package fr.tanghe.dev.monopoly;
 
 import java.util.ArrayList;
 
@@ -254,7 +254,7 @@ public class Joueur implements Comparable {
 
 
 
-     private void   augmenterCardinalite(String couleur){   // augmente de un le nombre de propriete d une couleur
+     private void augmenterCardinalite(String couleur){   // augmente de un le nombre de propriete d une couleur
         switch (couleur){
          case "v" :
              v++;
