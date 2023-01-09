@@ -6,12 +6,10 @@ import java.util.Collections;
 public class JeuDeMonopoly {
 
     private final ArrayList<Joueur> joueurs = new ArrayList<>();
-    private final Combinaison combinaison;
+    private final Gobelet gobelet;
     private boolean stop = false;
     private ArrayList<CaseConstructible> caseLibreAAchat = new ArrayList<>();
     private Plateau plateau ;
-
-
 
     public JeuDeMonopoly() {
         plateau= new Plateau();
@@ -20,10 +18,11 @@ public class JeuDeMonopoly {
         joueurs.add(new Joueur("Loubna","Elle", plateau.depart));
         joueurs.add(new Joueur("Mathieu","Il", plateau.depart));
         joueurs.add(new Joueur("Cedric","Il", plateau.depart));
-        combinaison = new Combinaison();
+        De de1 = new De();
+        De de2 = new De();
+        gobelet = new Gobelet(de1, de2);
         caseLibreAAchat=  new ArrayList<>(plateau.getCaseAchetable());
     }
-
 
     public void jouerUnePartie() {
         while (!stop) {
@@ -35,15 +34,12 @@ public class JeuDeMonopoly {
         afficheFinDePartie();
     }
 
-
     private void jouerUnTour(Joueur unjoueur) {
         if (!stop) { //verifier avant le joueur suivant si la partie est arrete
-            int[] valeurLancer = unjoueur.lancer();
-            int total = combinaison.faitLaSomme(valeurLancer);
-            boolean verifdouble = combinaison.estUnDouble(valeurLancer);
+            int total = gobelet.lancer();
             unjoueur.monLance(total);  // plus logique de l'afficher avant son eventuel deplacement, achat ou paiment de loyer, prison j'ai donc decomposé mon ousuisje initial
     // SI DOUBLE
-            if (verifdouble) {
+            if (gobelet.estUnDouble()) {
                 unjoueur.aFaitUnDouble(plateau.prison);  // incremente double met rejouer a true, le met en prison , condition liberable
                 if (!unjoueur.estEnPrison()) {        // si pas ne prison ->  jouer  son resultat
                     jouerLeTotalDe(unjoueur, total);
@@ -75,7 +71,7 @@ public class JeuDeMonopoly {
     private void liberer(Joueur unjoueur) {
         if (unjoueur.estEnPrison())  // verifier si il est prison
         {
-            unjoueur.liberationEnVue();   //   incrementer le nombre de tour et si 3 le liberer
+            unjoueur.liberationEnVue(); // incrementer le nombre de tour et si 3 le liberer
         }
     }
 
